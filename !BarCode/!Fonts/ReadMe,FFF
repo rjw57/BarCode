@@ -1,0 +1,186 @@
+Getting the best from the Acorn Outline Font Manager
+====================================================
+
+This document describes some aspects of RISC OS' new Outline Font Manager,
+and contains some hints as to how to get the best from it. The font manager
+is a complex piece of software which must sometimes make delicate tradeoffs
+between speed, space, and font quality. Getting this completely optimal
+involves reading the user's mind and predicting the future, both of which
+most computers still find a little tricky.
+
+The fonts controlled by the Font Manager live in files in some filing
+system, usually inside a directory called !Fonts. Although it can still read
+the font files used in the old Font Manager, the recommended form in which
+they now exist defines each character by its *outline*. This can then be
+scaled to any desired size, when rendering the character on a printer or on
+the screen.
+
+Two sophisticated tricks are used to improve the quality of the rendered
+fonts, and one sophisticated trick to improve the speed of the overall
+system.
+
+The first is called *anti-aliasing*: rather than just rendering the
+characters using black and white pixels, grey pixels are also used to make
+curves look smoother, and to provide a better approximation to the desired
+image when few pixels are available. This results in an astonishing jump in
+quality when few pixels are available, such as on the screen. The old Arthur
+1.20 Font Manager also used this.
+
+The second is called *hinting*. This means subtly altering the outline of
+the character being rendered in ways that depend on the target pixel grid.
+This allows properties concerning the symmetry of the character to be
+accurately preserved when the character is arbitrarily scaled. This is
+particularly useful when grey pixels are not available (such as on most
+printers). This is the major innovation of the new Outline Font Manager,
+previously such algorithms have only been in general use inside expensive
+PostScript printers. Acorn's implementation of this is so effective that
+many people find hinted character quality on the screen perfectly acceptable
+even without anti-alasing.
+
+The performance trick is called *cacheing*. Unfortunately, loading a
+character's outline from a file and computing a bitmap from it (using
+hinting and/or anti-aliasing) takes time. In order to get round this, such
+bitmaps are retained in the font manager when they have been computed, in
+case they are needed again. This is where predicting the future comes in: of
+the many hundreds and thousands of characters and sizes that the font
+manager must cache (e.g. retain), which ones are worth keeping? All that the
+Font Manager can do is to keep as many as it has space for, discarding ones
+that have not been used for some time.
+
+As the user of this system you can provide input to this process in the
+following way (this is where the Font Manager's inability at mind-reading is
+annoying).
+
+First, only you can decide how much memory the Font Manager may use for
+cacheing, and how much you need for other things. This is done by setting
+the Font cache size in the Task Window, or via *Configure FontSize (the
+latter will set the power-on default value).
+
+You can also spend disc memory to main certain operations faster. It's
+possible to save extra files inside !Fonts that contain prescaled,
+anti-aliased files
+
+Second, only you can decide how important character quality is to you, and
+how much time and memory you are prepared to spend on the quality of the
+results you see on the screen. Different people have different perceptions
+of "quality" too.
+
+You can control this using several new *Configure commands, as follows. If
+you do not touch these values then you will find that reasonable defaults
+are set up.
+
+*Configure FontMax2
+This sets the maximum size of anti-aliased characters, in pixels. If a
+character is larger than this value then anti-aliasing will not be used.
+Anti-aliasing quadruples the size of retained bitmaps in the cache, and
+slows down conversion from outlines too. Set this to 0 to turn anti-aliasing
+off entirely.
+
+*Configure FontMax3
+This sets of the maximum size of any form of retained bitmap. If a character
+to be drawn is larger than this then the outline will be drawn directly to
+the screen (or printer) with no cacheing happening at all. This is so that
+document headings, etc., where a few larger characters appear, do not flush
+everything else out of the font cache.
+
+The value is set in pixels (rather than points) because it is the pixel size
+that affects cache usage. This corresponds to different point sizes on the
+screen and on the printer.
+
+*Configure FontMax4
+If this is non-zero then *sub-pixel anti-aliasing* is used. This is a
+refinement of anti-aliasing in which four separate versions of each
+character are retained, depending on the placement of the character at
+sub-pixel accuracy. This can have a noticeable effect on character quality
+at small sizes but for most users the delay involved is unacceptable. Thus,
+most users leave this at the default value of 0.
+
+*Configure FontMax5
+If this is non-zero then sub-pixel anti-alaiasing is used in the vertical
+direction as well as the horizontal direction. This is even rarer than use
+of FontMax4. Almost all users leave this at the default value of 0.
+
+(Do not use *Configure FontMax1, it is for controlling the mixed use of
+outline and bitmap files and is of little importance to most users.)
+
+Troubleshooting
+---------------
+
+If every repaint on the screen causes intensive disc and hourglass activity
+then you may be having trouble with the font cache *thrashing* (e.g. it's
+too small to hold the range of fonts you are using at the moment). There may
+be other causes, e.g. the DTP program can cause disc activity without the
+font manager being involved.
+
+Try the following things:
+
+1. Change the size of the font cache using the Task Window. Does slightly
+more memory make it work better?
+
+2. Change FontMax2 to zero (reconfiguring these values takes immediate
+effect, you do not have to reboot). Is the quality of characters still
+acceptable? Does performance improve?
+
+3. Change FontMax3 to a lower value, or even 0. This should sharply reduce
+thrashing, but the action of painting on the screen will become much slower.
+
+Remember that these values will survive a reset or power-on.
+
+Miscellaneous Notes
+-------------------
+
+The above should be enough information to allow the typical user to get the
+most out of the Outline Font Manager. Here is some additional information on
+various related subjects, and some more advanced tips for effective use.
+
+The technology in the Outline Font Manager really is state-of-the-art. The
+hinting gives outstanding quality at low resolutions. No competing system
+has enough processor power to be able to use anti-aliasing effectively. The
+generation of screen and printer fonts from the same source (with precisely
+matching metrics) makes it easy to distribute new fonts, and solves many
+problems in creating powerful WYSIWYG applications. Unlike some other
+companies with similar technology, Acorn encourages the creation of new
+fonts by third parties and does not attempt to encrypt the fonts themselves.
+
+The default FontMax settings are designed for a user of a small system. A
+system with more than 1MB on which DTP-like applications are used
+intensively, would typically be configured with slightly larger values.
+
+A font is actually cached in blocks of 32 characters, with adjacent ASCII
+codes. Thus, just painting a single character will typically pull in 31
+others. This is because each disc operation has a subtantial start-up time.
+
+It's possible to save precomputed bitmaps from the cache into the filing
+system, this can speed up the use of certain sizes of font at the cost of
+disc space. *Configure FontMax 1 is used to control this.
+
+What is sub-pixel anti-aliasing? The width of each character is stored to
+greater accuracy than the pixels on the screen. Thus, in !Edit in mode 12,
+create a line consisting of lots of lower-case Trinity.Medium 'l's. See how
+they bunch up in groups of about 6 characters, with an extra pixel gap
+between bunches? This is because the width of this letter is not an exact
+multiple of the size of a screen pixel. Now set *Configure FontMax4 to 20,
+and see the difference: the bunching is smoothed out. Use !Magnifier to
+study the effect in more detail.
+
+It's possible for the font cache to grow if its size is definitely too
+small, up to a limit set by *Configure FontMax. If this happens it will then
+shrink back to the normal current size as soon as any fonts can be
+discarded. The FontMgr decides to do this rather than throw away cached
+blocks of currently "open" fonts. This can be used as a hint by application
+programs to make fix #1 in the "Troubleshooting" section happen
+automatically.
+
+When printing, there are conflicting requirements for memory. The Font
+manager needs memory to cache fonts, and the printer driver needs memory to
+build up a page image to send to the printer. Both of these affect printing
+speed, you will have to experiment to find the optimum. Changing to screen
+mode 0 while printing, for instance, can speed it up considerably. The print
+buffer is created from the Wimp free pool. As a general rule these remarks
+do not apply to PostScript printing, which operates in a different way.
+
+The font manager actually finds the fonts in !Fonts by examining directories
+named in the environment variable Font$Path. By default this (for
+compatibility with Arthur 1.20) points to another environment variable,
+Font$Prefix. It's possible to get the font manager to search more than one
+directory for fonts, by adding other directories to Font$Path.

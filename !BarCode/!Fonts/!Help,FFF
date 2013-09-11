@@ -1,0 +1,41 @@
+                       !Fonts
+                       ======
+
+The Fonts directory contains fonts that are not 
+resident in ROM. The characters available within 
+them can be inspected using the Chars application.
+
+The "Selwyn" font contains various symbols.
+
+The "Portrhouse" font is intended primarily for 
+screen use. At a nominal height of 10 points, it 
+uses no grey pixels when rendered on a mode 12 or
+mode 20 screen.  This font is only provided with 
+the Latin1 character set.
+
+The "System.Fixed" font precisely mimics the System
+font built in to the machine. The tuned bitmap files
+ensure that at a nominal height of 12 points there 
+are no grey pixels when rendered on a mode 12 or 
+mode 20 screen.  This font is only provided with the
+Latin1 character set.
+
+The "System.Medium" font contains the same 
+characters as System.Fixed, butwith proportionally 
+spaced metrics.  This font is only provided with the
+Latin1 character set.
+
+The "Sidney" font is included only to provide the 
+new Encoding file for use by the new Font manager.
+This file is also required if the PostScript
+printer driver is to render Sidney on a PostScript 
+device using the PostScript font "Symbol".  You 
+should copy this "Sidney" font over your existing 
+font, thus making a copy of the file "Encoding". If 
+you do not have a copy of the "Sidney" font then you 
+should ignore this directory and file.  It is not 
+advisable to delete the Sidney directory since you
+may require it in the future.
+
+For more information about !Fonts refer to the 
+RISC OS 3 User Guide.

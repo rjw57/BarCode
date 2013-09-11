@@ -1,0 +1,4 @@
+SET File$Type_0B4 "BarCode"
+SET BarCode$Dir <Obey$Dir>
+Set Alias$@RunType_0B4 Run <BarCode$Dir>.BarCdMnPg %%*0
+IconSprites <Obey$Dir>.!Sprites

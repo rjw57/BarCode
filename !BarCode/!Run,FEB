@@ -1,0 +1,8 @@
+SET File$Type_0B4 "BarCode"
+SET BarCode$Dir <Obey$Dir>
+Set Alias$@RunType_0B4 Run <BarCode$Dir>.BarCdMnPg %%*0
+*Filer_Run <BarCode$Dir>.!Fonts
+RMEnsure UtilityModule   3.00 ERROR This application needs at least RISC OS 3
+WimpSlot -min 64K -max 64K
+IconSprites <Obey$Dir>.!Sprites
+Run <Obey$Dir>.!RunImage

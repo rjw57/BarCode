@@ -1,0 +1,167 @@
+                       BarCode
+                       ~~~~~~~
+
+By Richard Wareham
+
+ BarCode is a program that, suprisingly enough, 
+allows you to create barcodes on the computer. 
+BarCode will output in a variety of file formats.
+These are Draw, Sprite and its very own BarCode
+format. It is worth noting at this point that
+BarCode can only load its own file format.
+
+ To run BarCode simply double click on its icon
+in the directory display. It will install itself on
+the icon bar as usual. If you examine the icon bar
+menu (press the middle button over the icon on the
+icon bar) you will see four options. You will
+probably know what most of these functions do. To
+run the main part of the program simply click the
+left button over the icon. This will present you 
+with a main menu. The options are :-
+
+Information
+~~~~~~~~~~~
+ This displays the Information Screen.
+
+Start a New / Edit Current Barcode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ This leads to another menu that we will explain in
+a moment.
+
+Display Current Barcode
+~~~~~~~~~~~~~~~~~~~~~~~
+ Displays the current barcode.
+
+Save Options
+~~~~~~~~~~~~
+ This leads to another menu where you can select
+what file type you wish BarCode to output. Your 
+current selection is displayed at the top.
+
+Quit
+~~~~
+
+ This returns you to the desktop.
+
+The 'Start a New / Edit Current Barcode' Menu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+ This menu is invoked by selecting the 'Start a New
+/ Edit Current Barcode menu option by pressing 
+select over it. This menu has these options :-
+
+Set Article Number
+~~~~~~~~~~~~~~~~~~
+ The article number is the number that appears BELOW
+the MAIN barcode. This means that any numbers to the
+right or left of the main chunk of black and white
+MUST be discounted. Most article numbers are twelve
+digits in length. The program will only accept input
+of twelve numbers so don't try pressing return after
+typing only ten numbers. BarCode will ask you if the
+above number is correct and if not it will allow you
+to input it again.   
+
+Set A and B sets
+~~~~~~~~~~~~~~~~
+ This allows you to specify the number that normally
+appears to the LEFT of the barcode. This number 
+describes what pattern of number sets (see file 
+named 'NumberBars' in the Examples directory) the
+barcode will use. These are always in the form
+
+  XXXXXX CCCCCC
+
+where the XXXXXX stands for the pattern of 'A's and 
+'B's that appear next to the number. The menu has
+an option 'More ->' at the bottom. This leads to 
+another menu with the remainder of the numbers and
+'<- Back' in it. '<- Back' will take you back to the
+first menu. Both menus have the option 'Back to New
+Barcode Menu'. This will take you back to the 'Start
+a New / Edit Current Barcode' menu.
+
+View Current Barcode
+~~~~~~~~~~~~~~~~~~~~
+ Same as the 'Display Current Barcode' option on the
+main menu. 
+
+Back to Main Menu
+~~~~~~~~~~~~~~~~~
+ This takes you back to the main menu.
+
+IMPORTANT
+~~~~~~~~~
+ Due to the structure of this program it is
+VITAL to keep the disk in the drive when jumping
+from the desktop into the main program and when 
+using the icon bar menu.
+
+Loading
+~~~~~~~
+ As said before BarCode con only load BarCode files
+as only these hold enough information to recreate
+Barcodes. There are two ways to load a BarCode file,
+these are double clicking on it and dragging it from
+the directory display onto the icon.
+
+Tutorial
+~~~~~~~~
+ During this tutorial we will be using the program
+to create a barcode like the one in the files
+'BarCodeDrw', 'BarCodeSpt' and 'BarCode' (they are
+found in the Examples directory). View the files
+'BarCodeDrw' and 'BarCodeSpt' now by double-clicking
+on them. Don't double-click on 'BarCode' as this 
+will only load itself into the program and will not
+immediatly reveal istelf.
+
+ To start with load the program up by double-
+clicking on it as normal. Now click ONCE on the icon
+to bring the main menu up. Select 'Start a New / 
+Edit Current Barcode'. Now select 'Set Article
+Number' and type the following :-
+
+  123456789012
+
+Respond to the question 'Is this correct (Y/N)' by
+typing 'Y'. Now select 'Set A and B sets' from the
+menu. Move the mouse to '0) .. AAAAAA' and click
+select. Select 'Back to New Barcode Menu' and 
+then select 'View Current Barcode'. If all has gone 
+well, you should see your barcode in all its glory.
+
+ Now you will be wanting to save. Navigate your way
+back to the main menu and select 'Quit'. Don't 
+worry, your wonderful new barcode has not been lost
+you will be saving from the Desktop. Click the 
+middle button over the BarCode icon and move across
+on 'Save ‰'. You should see a standard save box and
+a picture of a pencil and a barcode in the box.
+Alter the default name 'BarCode' if you want and 
+save in the normal manner by dragging the icon to
+a directory display.
+
+ Now we will learn how to save as a Drawfile. It's
+very easy. Go back into the main program by clicking
+on the icon and salect 'Save Options' from the main
+menu. Now select 'Save as Drawfile' from the menu 
+return to the main menu by selecting 'Back to Main
+Menu'. Now if you select 'Quit' and look at the save
+box you will see that the picture of a pen and a 
+barcode has been replaced by a drawfile icon. You
+can the save using the exact same procedure as 
+before and save out as a Drawfile. The procedure is 
+exactly the same for Sprite saving except you have
+to select 'Save as Sprite'.
+
+ That ends our brief tutorial. 
+
+Aknowledgements
+~~~~~~~~~~~~~~~
+ I would like to thank Michael Attenborough for
+submitting his program MakeDraw in Acorn User Dec
+1992. I used these routines extensivly in the 
+Drawfile saving part of the program.
+ 
