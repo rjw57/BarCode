@@ -4,7 +4,8 @@ By Richard Wareham <rjw57@cantab.net>
 
 **Note:** This program was written for RISC OS and first appeared in ``*info``
 in Acorn User magazine in October 1994. It is written in BBC Basic and is no
-longer actively maintained.
+longer actively maintained. Detokenised versions of the Basic sources are
+included with ``.bas`` file extensions.
 
  BarCode is a program that, suprisingly enough, 
 allows you to create barcodes on the computer. 
