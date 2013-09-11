@@ -1,5 +1,4 @@
-                       BarCode
-                       ~~~~~~~
+# BarCode
 
 By Richard Wareham
 
@@ -20,39 +19,39 @@ run the main part of the program simply click the
 left button over the icon. This will present you 
 with a main menu. The options are :-
 
-Information
-~~~~~~~~~~~
+## Information
+
  This displays the Information Screen.
 
-Start a New / Edit Current Barcode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## Start a New / Edit Current Barcode
+
  This leads to another menu that we will explain in
 a moment.
 
-Display Current Barcode
-~~~~~~~~~~~~~~~~~~~~~~~
+## Display Current Barcode
+
  Displays the current barcode.
 
-Save Options
-~~~~~~~~~~~~
+## Save Options
+
  This leads to another menu where you can select
 what file type you wish BarCode to output. Your 
 current selection is displayed at the top.
 
-Quit
-~~~~
+## Quit
+
 
  This returns you to the desktop.
 
-The 'Start a New / Edit Current Barcode' Menu
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## The 'Start a New / Edit Current Barcode' Menu
+
  
  This menu is invoked by selecting the 'Start a New
 / Edit Current Barcode menu option by pressing 
 select over it. This menu has these options :-
 
-Set Article Number
-~~~~~~~~~~~~~~~~~~
+## Set Article Number
+
  The article number is the number that appears BELOW
 the MAIN barcode. This means that any numbers to the
 right or left of the main chunk of black and white
@@ -63,8 +62,8 @@ typing only ten numbers. BarCode will ask you if the
 above number is correct and if not it will allow you
 to input it again.   
 
-Set A and B sets
-~~~~~~~~~~~~~~~~
+## Set A and B sets
+
  This allows you to specify the number that normally
 appears to the LEFT of the barcode. This number 
 describes what pattern of number sets (see file 
@@ -82,32 +81,32 @@ first menu. Both menus have the option 'Back to New
 Barcode Menu'. This will take you back to the 'Start
 a New / Edit Current Barcode' menu.
 
-View Current Barcode
-~~~~~~~~~~~~~~~~~~~~
+## View Current Barcode
+
  Same as the 'Display Current Barcode' option on the
 main menu. 
 
-Back to Main Menu
-~~~~~~~~~~~~~~~~~
+## Back to Main Menu
+
  This takes you back to the main menu.
 
-IMPORTANT
-~~~~~~~~~
+## IMPORTANT
+
  Due to the structure of this program it is
 VITAL to keep the disk in the drive when jumping
 from the desktop into the main program and when 
 using the icon bar menu.
 
-Loading
-~~~~~~~
+## Loading
+
  As said before BarCode con only load BarCode files
 as only these hold enough information to recreate
 Barcodes. There are two ways to load a BarCode file,
 these are double clicking on it and dragging it from
 the directory display onto the icon.
 
-Tutorial
-~~~~~~~~
+## Tutorial
+
  During this tutorial we will be using the program
 to create a barcode like the one in the files
 'BarCodeDrw', 'BarCodeSpt' and 'BarCode' (they are
@@ -158,8 +157,8 @@ to select 'Save as Sprite'.
 
  That ends our brief tutorial. 
 
-Aknowledgements
-~~~~~~~~~~~~~~~
+## Aknowledgements
+
  I would like to thank Michael Attenborough for
 submitting his program MakeDraw in Acorn User Dec
 1992. I used these routines extensivly in the 
